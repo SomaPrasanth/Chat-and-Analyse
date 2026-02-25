@@ -7,7 +7,7 @@ import seaborn as sns
 
 # --- 1. CONFIGURATION ---
 st.set_page_config(page_title="Data Concierge", layout="wide")
-genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
+genai.configure(api_key="AIzaSyAHqPtZHt2iaBVtzJL-0oIrt838CbMZpkQ") 
 model = genai.GenerativeModel('gemini-2.5-flash')
 
 # --- 2. SESSION STATE MANAGEMENT ---
