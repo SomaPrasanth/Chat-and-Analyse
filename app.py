@@ -4,7 +4,7 @@ import google.generativeai as genai
 import re
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+import sklearn
 # --- 1. CONFIGURATION ---
 st.set_page_config(page_title="Data Concierge", layout="wide")
 genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
