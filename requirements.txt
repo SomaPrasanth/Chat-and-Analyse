@@ -3,3 +3,4 @@ pandas
 google-generativeai
 matplotlib
 seaborn
+python-dotenv
