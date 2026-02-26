@@ -21,21 +21,31 @@ if "last_uploaded" not in st.session_state:
     st.session_state.last_uploaded = None
 
 # --- 3. SIDEBAR: FILE UPLOADER ---
-uploaded_file = st.sidebar.file_uploader("Upload CSV", type="csv")
-
-if uploaded_file:
-    if st.session_state.last_uploaded != uploaded_file.name:
-        st.session_state.df = pd.read_csv(uploaded_file)
-        st.session_state.last_uploaded = uploaded_file.name
-        st.session_state.messages = []
-        st.session_state.df_history = []    
+# --- 3. SIDEBAR: FILE UPLOADER & INFO ---
+with st.sidebar:
+    st.header("📂 Upload Data")
+    uploaded_file = st.file_uploader("Upload CSV", type="csv")
     
-    # Use the dataframe from session state
-    df = st.session_state.df
+    st.divider()
     
-    # Generate Metadata
-    metadata = f"Columns: {list(df.columns)}\nTypes: {df.dtypes.to_dict()}\nNulls: {df.isnull().sum().to_dict()}"
-
+    # Quick Instructions
+    st.markdown("### 📖 How to use")
+    st.markdown("""
+    1. **Upload** your messy CSV file.
+    2. **Chat** with the bot to clean it (e.g., *"Drop missing values"*).
+    3. **Visualize** it (e.g., *"Plot a histogram of Age"*).
+    4. **Download** your clean dataset.
+    """)
+    
+    st.divider()
+    
+    # About Section
+    st.markdown("### 👨‍💻 About")
+    st.info("""
+    **Data Concierge** Built by Somaprasanth to simplify exploratory data analysis and preprocessing using Generative AI.
+    
+    [GitHub Profile](https://github.com/SomaPrasanth)
+    """)
     # --- 4. CHAT INTERFACE ---
     st.subheader("💬 Chat with your Data")
     
