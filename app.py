@@ -20,7 +20,6 @@ if "df_history" not in st.session_state:
 if "last_uploaded" not in st.session_state:
     st.session_state.last_uploaded = None
 
-# --- 3. SIDEBAR: FILE UPLOADER ---
 # --- 3. SIDEBAR: FILE UPLOADER & INFO ---
 with st.sidebar:
     st.header("📂 Upload Data")
@@ -159,4 +158,8 @@ with st.sidebar:
             )
 
     # Show the actual data table
-    st.dataframe(st.session_state.df.head(10))
+    # Show the actual data table ONLY if the dataframe exists
+    if st.session_state.df is not None:
+        st.dataframe(st.session_state.df.head(10))
+    else:
+        st.warning("⚠️ Dataframe is empty or was accidentally cleared.")
