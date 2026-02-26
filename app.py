@@ -4,10 +4,14 @@ import google.generativeai as genai
 import re
 import matplotlib.pyplot as plt
 import seaborn as sns
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # --- 1. CONFIGURATION ---
 st.set_page_config(page_title="Data Concierge", layout="wide")
-genai.configure(api_key="AIzaSyAHqPtZHt2iaBVtzJL-0oIrt838CbMZpkQ") 
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 model = genai.GenerativeModel('gemini-2.5-flash')
 
 # --- 2. SESSION STATE MANAGEMENT ---
